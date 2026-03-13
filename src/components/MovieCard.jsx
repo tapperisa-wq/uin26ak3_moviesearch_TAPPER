@@ -6,10 +6,9 @@ export default function MovieCard({movie}){
         <li>
             <Link to = {`/${movie.imdbID}`}>
             <article>
-                {movie.Poster !== "N/A" 
-                ? <img src={movie.Poster} alt={movie.Title}/>
-                : <p>Ingen bilde</p>
-                }
+                
+                <img src= {movie.Poster !== "N/A" ? movie.Poster : "/no-img.png" } alt={movie.Title}/>
+                
                 <h2>
                     {movie.Title}
                 

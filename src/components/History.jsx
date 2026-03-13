@@ -1,8 +1,10 @@
-export default function History({history, setSearch, getMovies}){
+export default function History({history, setSearch, getMovies, setFocused}){
     
     const handleChange= (e) => {
-        setSearch(e.target.value)
-        getMovies(e.target.value)
+        const value = e.target.value
+        setSearch(value)
+        getMovies(value)
+        setFocused(false)
     }
 
     return(

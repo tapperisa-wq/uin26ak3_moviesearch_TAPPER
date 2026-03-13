@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import History from "../components/History"
 import MovieList from "../components/MovieList"
+
+
 
 
 export default function Home(){
 
     const [search, setSearch] = useState("")
     const [movies, setMovies] = useState([])
+
+    const searchRef = useRef(null)
 
     const storedHistory = localStorage.getItem("search")
     const [focused, setFocused] = useState(false)
@@ -15,6 +19,20 @@ export default function Home(){
 
     const baseUrl = `http://www.omdbapi.com/?s=${search}&apikey=`
     const apiKey = import.meta.env.VITE_APP_API_KEY
+
+    useEffect(()=>{
+        const handleClickOut = (e) =>{
+            if (searchRef.current && !searchRef.current.contains(e.target)) {
+                setFocused(false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOut)
+
+        return() => {
+            document.removeEventListener("mousedown", handleClickOut) 
+        }
+    },[])
+
 
     useEffect(()=>{
         localStorage.setItem("search", JSON.stringify(history))
@@ -38,9 +56,9 @@ export default function Home(){
     }, [])
 
 
-    const getMovies = async() => {
+    const getMovies = async(movie) => {
         try{
-            const response = await fetch(`${baseUrl}${apiKey}`)
+            const response = await fetch(`http://www.omdbapi.com/?s=${movie}&apikey=${apiKey}`)
             const data = await response.json()
 
             if (data.Search) {
@@ -62,31 +80,55 @@ export default function Home(){
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        e.target.reset()
+        
+        
 
-        if(search.length <3) return 
+        if(!search || search.trim().length <3) {
+            alert("Skriv minst 3 tegn for å søke")
+        return }
 
-        getMovies()
+        getMovies(search)
+
+        setFocused(false)
 
         if (!history.includes(search)){
         setHistory((prev) => [...prev, search])}
 
     }
 
+    const clearHistory = () => {
+        setHistory([])
+        localStorage.removeItem("search")
+        
+    }
+
 
     return(
         <main>
             <h1>Filmsøk</h1>
-            <form onSubmit={handleSubmit} >
+            <form className="searchbar" onSubmit={handleSubmit} ref={searchRef} >
+                <section className="søke-gruppe">
                 <label>
                     Søk etter film
                     <input type="search" 
                     placeholder="Harry Potter..." 
+                    value={search}
                     onChange={handleChange} 
-                    onFocus={()=> setFocused(true)} /*onBlur={()=>setFocused(false)}*/></input>
+                    onFocus={()=> setFocused(true)}></input>
                 </label>
-            {focused ? <History history = {history} setSearch={setSearch} getMovies={getMovies} /> : null}
-            <button onClick={getMovies}>Søk</button>
+                    <button type="submit">Søk</button>
+                </section>
+
+            {focused && history.length > 0 ? 
+            <section className="logcard">
+            (<History history = {history} setSearch={setSearch} getMovies={getMovies} setFocused={setFocused} />)
+            {history.length > 0 ? (
+                <button type = "button" onClick={clearHistory}>Tøm søkehistorikk</button>
+            ) : null}
+            </section> 
+            : null}
+
+            
             </form>
             <MovieList movies= {movies} />
         
@@ -94,10 +136,7 @@ export default function Home(){
     )
 }
 
-//søkefelt
-//søkefelt tar fetch 
 
-//funksjon tøm logg
-//local storage remove
 
 //feilmelding getmovies not defined 
+// tre tegn, rette opp at tilfeldig api kall når søk-knappen trykkes på

@@ -31,17 +31,19 @@ export default function Movie(){
     
     return(
         <main>
-            <article>
+            <article className="filmkort">
                 <h1>{film.Title}</h1>
                 {film.Poster !== "N/A" 
                 ? <img src={film.Poster} alt={film.Title}/>
                 : <p>Ingen bilde</p>
                 }
-                <p><strong>År: </strong>{film.Year} </p>
-                <p><strong>Sjanger: </strong>{film.Genre} </p>
-                <p><strong>Regissør: </strong> {film?.Director} </p>
-                <p><strong>Skuespillere: </strong>{film?.Actors}... </p>
 
+                <section className="info-holder">
+                    <p><strong>År: </strong>{film.Year} </p>
+                    <p><strong>Sjanger: </strong>{film.Genre} </p>
+                    <p><strong>Regissør: </strong> {film?.Director} </p>
+                    <p><strong>Skuespillere: </strong>{film?.Actors}... </p>
+                </section>
             </article>
         </main>
     )

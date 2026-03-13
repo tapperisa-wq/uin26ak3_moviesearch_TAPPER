@@ -2,9 +2,6 @@ import { useEffect, useState, useRef } from "react"
 import History from "../components/History"
 import MovieList from "../components/MovieList"
 
-
-
-
 export default function Home(){
 
     const [search, setSearch] = useState("")
@@ -102,7 +99,6 @@ export default function Home(){
         
     }
 
-
     return(
         <main>
             <h1>Filmsøk</h1>
@@ -121,7 +117,7 @@ export default function Home(){
 
             {focused && history.length > 0 ? 
             <section className="logcard">
-            (<History history = {history} setSearch={setSearch} getMovies={getMovies} setFocused={setFocused} />)
+            <History history = {history} setSearch={setSearch} getMovies={getMovies} setFocused={setFocused} />
             {history.length > 0 ? (
                 <button type = "button" onClick={clearHistory}>Tøm søkehistorikk</button>
             ) : null}
@@ -140,3 +136,4 @@ export default function Home(){
 
 //feilmelding getmovies not defined 
 // tre tegn, rette opp at tilfeldig api kall når søk-knappen trykkes på
+//handleclickout

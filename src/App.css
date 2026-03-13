@@ -26,7 +26,7 @@ h1{
 
 .logcard{
   position: absolute;
-  background:white;
+  background:rgb(57, 57, 57);
   width: 100%;
   z-index: 10;
   color:black;

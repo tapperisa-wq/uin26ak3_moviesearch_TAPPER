@@ -35,6 +35,7 @@ export default function MovieCard({movie}){
 /*  på filmkortet brukte jeg Gemini Ai for å hjelpe meg med å fikse placeholder-bildet, da det første jeg prøvde ikke ville fungere. 
 Fikk egentlig beskjed at "movie.Poster && movie.Poster !== "N/A"" var litt overkomplisert men siden ville ikke gjenkjenne placeholderen og faktisk dukke opp på siden min.
 Her er lenken til dette: https://gemini.google.com/share/df97dfee02bc 
+Det samme inne på Movie.jsx sånn at placeholderbildet skulle dukke opp både i Movie-pagen og listen av filmer.
 
 Jeg brukte opprinnelig ChatGPt for å prøve å løse dette problemet men det funket ikke helt heller: 
 https://chatgpt.com/share/69b57ac4-bbe4-800e-9fb1-b0d84bba3d3e*/

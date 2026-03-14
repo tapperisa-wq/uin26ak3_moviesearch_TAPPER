@@ -28,8 +28,8 @@ export default function Movie(){
     
     if (!film) return <p>Laster film</p>
    
-    const placeholder = "https://placehold.jp/24/ffffff/888888/300x200.png?text=Ingen%20bilde"
 
+    const placeholder = "https://placehold.jp/24/ffffff/888888/300x200.png?text=Ingen%20bilde"
 
     return(
         <main>

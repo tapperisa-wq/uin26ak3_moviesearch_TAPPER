@@ -74,7 +74,6 @@ export default function Home(){
         }
     }
 
-
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
@@ -128,8 +127,6 @@ export default function Home(){
             ) : null}
             </section> 
             : null}
-
-            
             </form>
             <MovieList movies= {movies} />
         
@@ -141,4 +138,3 @@ export default function Home(){
 
 //feilmelding getmovies not defined 
 // tre tegn, rette opp at tilfeldig api kall når søk-knappen trykkes på
-//handleclickout

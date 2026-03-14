@@ -16,4 +16,6 @@ export default function MovieList({movies}){
     )
 }
 
-// kommentarer fikse opp feilkode encountered two children with the same key
+/*Her brukte jeg ai for ikse opp feilkode "encountered two children with the same key". 
+Den kom med forslaget å legge til +i til imdbID for å gjøre den unik, siden IMDB-er kan ha samme id
+Jeg mistet dessverre denne lenken til ChatGpt, da jeg med uhell brukte en privat browser som jeg klarte å lukke før jeg lagret det den kom med. */

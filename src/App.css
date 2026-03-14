@@ -11,7 +11,7 @@ body{
 
 
 #root{
-  max-width: 1200px;
+  max-width: 100%;
   margin: auto;
   padding: 2rem;
 }
@@ -57,14 +57,26 @@ ul{
   list-style:none;
   padding: 0;
   margin:auto;
-
+  width: 100%;
   display:grid;
-  grid-template-columns: repeat(auto-fill,minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(220px, 1fr));
+  grid-auto-columns: 1fr;
+  max-width: 1200px;
   gap: 20px;
-  align-items: start;
+  align-items: stretch;
+  justify-items: stretch;
+  grid-auto-rows: 1fr;
 
 }
 
+li {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
 
 li a{
   display:block;
@@ -77,11 +89,14 @@ li article{
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
-  height: 100%;
+  
   display: flex;
   flex-direction: column;
   gap: 10px;
   transition: transform 0.2s, boxshadow 0.2s;
+  flex: 1;
+  justify-content: space-between;
+  min-width: 0;
 
   
 }
@@ -92,20 +107,55 @@ li article:hover{
 }
 
 li img{
+  display: block;
   width: 100%;
-  height: 300px;
+  height: 260px;
   object-fit: cover;
   border-radius: 8px;
   background: #222;
+  aspect-ratio: 16/9;
 }
 
+/* her brukte jeg copilot for å hjelpe meg med å få filmkortene like store, ettersom de første forsøkene mine ikke fungerte. */
 li h2{
   font-size: 1rem;
   margin: 0.6rem 0 0.3rem 0;
+  line-height: 1.2;
+  height: 2.4rem; 
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
+
 
 li p{
   font-size: 0.9rem;
+}
+
+/* forslag fra copilot for å få filmkortene på en linje */
+@media (max-width: 600px) {
+  ul { grid-template-columns: 1fr; }
+  li img { height: 220px; }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  ul { grid-template-columns: repeat(2, 1fr); }
+  li img { height: 240px; }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  ul { grid-template-columns: repeat(3, 1fr); }
+  li img { height: 260px; }
+}
+
+@media (min-width: 1201px) {
+  ul { grid-template-columns: repeat(5, 1fr); }
+  li img { height: 300px; }
 }
 
 .filmkort{

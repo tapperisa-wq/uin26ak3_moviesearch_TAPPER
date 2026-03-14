@@ -30,6 +30,10 @@ export default function Home(){
         }
     },[])
 
+    // Her brukte jeg ChatGPT for å hjelpe med at loggkortet kan lukke seg når det klikkes på et annet sted på skjermen. 
+    // Jeg har dessverre mistet dataen/loggen for denne chatten, så jeg får ikke limet den inn her.Men spesifikt dette med searchRef, 
+    // eventlistener, clickOut og mousedown er det jeg fikk mest hjelp til her
+
 
     useEffect(()=>{
         localStorage.setItem("search", JSON.stringify(history))
@@ -89,8 +93,9 @@ export default function Home(){
         setFocused(false)
 
         if (!history.includes(search)){
-        setHistory((prev) => [...prev, search])}
-
+        setHistory((prev) => [...prev, search])
+    }
+    setSearch("")
     }
 
     const clearHistory = () => {

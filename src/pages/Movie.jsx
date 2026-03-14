@@ -28,15 +28,17 @@ export default function Movie(){
     
     if (!film) return <p>Laster film</p>
    
-    
+    const placeholder = "https://placehold.jp/24/ffffff/888888/300x200.png?text=Ingen%20bilde"
+
+
     return(
         <main>
             <article className="filmkort">
                 <h1>{film.Title}</h1>
-                {film.Poster !== "N/A" 
-                ? <img src={film.Poster} alt={film.Title}/>
-                : <p>Ingen bilde</p>
-                }
+
+                <img src= {film.Poster && film.Poster !== "N/A" ? film.Poster : placeholder } 
+                alt={film.Title}
+                onError={(e) => {e.target.src = placeholder}} />
 
                 <section className="info-holder">
                     <p><strong>År: </strong>{film.Year} </p>

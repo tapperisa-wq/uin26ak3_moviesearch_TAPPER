@@ -80,8 +80,6 @@ export default function Home(){
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        
-        
 
         if(!search || search.trim().length <3) {
             alert("Skriv minst 3 tegn for å søke")
@@ -94,7 +92,7 @@ export default function Home(){
         if (!history.includes(search)){
         setHistory((prev) => [...prev, search])
     }
-    setSearch("")
+        setSearch("")
     }
 
     const clearHistory = () => {
@@ -119,14 +117,14 @@ export default function Home(){
                     <button type="submit">Søk</button>
                 </section>
 
-            {focused && history.length > 0 ? 
-            <section className="logcard">
-            <History history = {history} setSearch={setSearch} getMovies={getMovies} setFocused={setFocused} />
-            {history.length > 0 ? (
-                <button type = "button" onClick={clearHistory}>Tøm søkehistorikk</button>
-            ) : null}
-            </section> 
-            : null}
+                {focused && history.length > 0 ? 
+                <section className="logcard">
+                    <History history = {history} setSearch={setSearch} getMovies={getMovies} setFocused={setFocused} />
+                    {history.length > 0 ? (
+                        <button type = "button" onClick={clearHistory}>Tøm søkehistorikk</button>
+                    ) : null}
+                </section> 
+                : null}
             </form>
             <MovieList movies= {movies} />
         
@@ -136,5 +134,5 @@ export default function Home(){
 
 
 
-//feilmelding getmovies not defined 
-// tre tegn, rette opp at tilfeldig api kall når søk-knappen trykkes på
+
+

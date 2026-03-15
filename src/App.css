@@ -116,7 +116,8 @@ li img{
   aspect-ratio: 16/9;
 }
 
-/* her brukte jeg copilot for å hjelpe meg med å få filmkortene like store, ettersom de første forsøkene mine ikke fungerte. */
+/* her brukte jeg copilot for å hjelpe meg med å få filmkortene like store, ettersom de første forsøkene mine ikke fungerte. 
+overflow og ned er anbefalinger fra denne. */
 li h2{
   font-size: 1rem;
   margin: 0.6rem 0 0.3rem 0;
@@ -137,26 +138,6 @@ li p{
   font-size: 0.9rem;
 }
 
-/* forslag fra copilot for å få filmkortene på en linje */
-@media (max-width: 600px) {
-  ul { grid-template-columns: 1fr; }
-  li img { height: 220px; }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  ul { grid-template-columns: repeat(2, 1fr); }
-  li img { height: 240px; }
-}
-
-@media (min-width: 901px) and (max-width: 1200px) {
-  ul { grid-template-columns: repeat(3, 1fr); }
-  li img { height: 260px; }
-}
-
-@media (min-width: 1201px) {
-  ul { grid-template-columns: repeat(5, 1fr); }
-  li img { height: 300px; }
-}
 
 .filmkort{
   max-width: 900px;
@@ -173,16 +154,8 @@ li p{
 
   color: white;
 }
-.info-holder{
-  display:flex;
-  flex-direction: column;
-  gap:10px;
-}
 
-.info-holder h1{
-  font-size: 2rem;
-  margin-top: 0;
-}
+
 .filmkort img{
   width: 100%;
   border-radius: 10px;
@@ -193,6 +166,16 @@ li p{
   line-height: 1.4;
 }
 
+.info-holder{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+.info-holder h1{
+  font-size: 2rem;
+  margin-top: 0;
+}
 
 .searchbar{
     max-width: 600px;
@@ -229,4 +212,25 @@ li p{
 
 .searchbar button:hover{
     background: #f0b400
+}
+
+/* forslag fra copilot for å få filmkortene på en linje */
+@media (max-width: 600px) {
+  ul { grid-template-columns: 1fr; }
+  li img { height: 220px; }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  ul { grid-template-columns: repeat(2, 1fr); }
+  li img { height: 240px; }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  ul { grid-template-columns: repeat(3, 1fr); }
+  li img { height: 260px; }
+}
+
+@media (min-width: 1201px) {
+  ul { grid-template-columns: repeat(5, 1fr); }
+  li img { height: 300px; }
 }

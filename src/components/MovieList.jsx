@@ -6,6 +6,7 @@ export default function MovieList({movies}){
             <ul>
                 {movies?.map((movie,i) => (
                     <MovieCard key = {movie.imdbID + i}
+                    /* bruker +i her fordi uten den fikk jeg feilmelding om at det var to children med samme nøkkel */
                     movie = {movie}
                     />
                 ))}

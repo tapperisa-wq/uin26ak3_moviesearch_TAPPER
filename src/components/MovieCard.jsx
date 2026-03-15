@@ -12,6 +12,7 @@ export default function MovieCard({movie}){
     return(
         <li>
             <Link to = {`/${movie.imdbID}`}>
+            {/* her brukes imdb id istedenfor tittelen for å unngå konflikter mellom filmer med samme navn*/}
             <article>
                 
                 <img src= {poster}

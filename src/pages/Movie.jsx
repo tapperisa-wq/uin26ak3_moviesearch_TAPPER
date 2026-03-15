@@ -35,11 +35,9 @@ export default function Movie(){
         <main>
             <article className="filmkort">
                 <h1>{film.Title}</h1>
-
                 <img src= {film.Poster && film.Poster !== "N/A" ? film.Poster : placeholder } 
-                alt={film.Title}
-                onError={(e) => {e.target.src = placeholder}} />
-
+                    alt={film.Title}
+                    onError={(e) => {e.target.src = placeholder}} />
                 <section className="info-holder">
                     <p><strong>År: </strong>{film.Year} </p>
                     <p><strong>Sjanger: </strong>{film.Genre} </p>
